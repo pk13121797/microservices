@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="apigw" />
+        <module name="notification" />
+        <module name="clients" />
+        <module name="shipment" />
+        <module name="amqp" />
+        <module name="payment" />
+        <module name="eureka-server" />
+        <module name="order" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="customer" target="18" />
+      <module name="customer (1)" target="18" />
+      <module name="fraud" target="18" />
+      <module name="kafka" target="17" />
+      <module name="payment (1)" target="18" />
+      <module name="payment (1) (com.example)" target="18" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="amqp" options="-parameters" />
+      <module name="apigw" options="-parameters" />
+      <module name="clients" options="-parameters" />
+      <module name="customer" options="-parameters" />
+      <module name="customer (1)" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
+      <module name="fraud" options="-parameters" />
+      <module name="kafka" options="-parameters" />
+      <module name="microservices" options="-parameters" />
+      <module name="notification" options="-parameters" />
+      <module name="order" options="-parameters" />
+      <module name="payment" options="-parameters" />
+      <module name="payment (1)" options="-parameters" />
+      <module name="payment (1) (com.example)" options="-parameters" />
+      <module name="shipment" options="-parameters" />
+    </option>
+  </component>
+</project>

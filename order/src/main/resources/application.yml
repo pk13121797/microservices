@@ -1,0 +1,71 @@
+server:
+  port: 8090
+
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      orderService:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 5
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+
+spring:
+  application:
+    name: order
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+  datasource:
+    password: password
+    url: jdbc:postgresql://localhost:5432/order
+    username: pavvel
+
+  zipkin:
+    base-url: http://localhost:9411
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+  rabbitmq:
+    addresses: localhost:5672
+  kafka:
+    bootstrap-servers: localhost:9092
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      enabled: false
+
+rabbitmq:
+  exchanges:
+    internal: internal.exchange
+  queues:
+    order: order.queue
+    reverse-order: reverse-order.queue
+  routing-keys:
+    internal-order: internal.order.routing-key
+    internal-reverse-order: internal.reverse-order.routing-key
